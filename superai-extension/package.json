@@ -1,0 +1,309 @@
+{
+    "name": "superai",
+    "displayName": "SuperAI - Intelligent Code Completion & Multi-File Refactoring",
+    "description": "Advanced AI-powered code completion with Pre-Processing + Four-Stage Gemini system (Type Fixes→Understand→Plan→Implement→Replace) and Multi-File Project Management. Features: Automatic smart type converter injection, project-wide indexing with full file content loading, semantic search, AI-powered refactoring with context from imported files, impact analysis, symbol graph navigation, and intelligent multi-file editing with diff preview. AI receives actual file contents and type-safe functions for accurate predictions!",
+    "publisher": "yourname",
+    "version": "7.2.0",
+    "engines": { "vscode": "^1.80.0" },
+    "categories": ["Programming Languages", "Machine Learning", "Other"],
+    "keywords": ["ai", "completion", "intellisense", "autocomplete", "mcp"],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "superai.completeCode",
+                "title": "SuperAI: Complete All Patterns in File",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.autoFix",
+                "title": "SuperAI: Auto-Fix & Complete File",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.globalComplete",
+                "title": "SuperAI: Apply Global Completions",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.writeFixedCode",
+                "title": "SuperAI: Write Fixed Code to File",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.analyzeFile",
+                "title": "SuperAI: Analyze File",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.workspaceInfo",
+                "title": "SuperAI: Show Workspace Info",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.toggleAutoComplete",
+                "title": "SuperAI: Toggle Auto-Completion",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.apiKeyStatus",
+                "title": "SuperAI: Show API Key Status",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.enhancedSyntaxFix",
+                "title": "SuperAI: Enhanced Syntax Fix (Auto-Create Functions)",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.fourStageGeminiFix",
+                "title": "SuperAI: Four-Stage Gemini (Understand→Plan→Implement→Replace)",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.indexProject",
+                "title": "SuperAI: Index Project for Multi-File Operations",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.searchProject",
+                "title": "SuperAI: Search Project (Natural Language)",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.refactorWithAI",
+                "title": "SuperAI: Refactor with AI",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.fourStageMultiFile",
+                "title": "SuperAI: Four-Stage Gemini with Multi-File Context (Auto-Index)",
+                "category": "SuperAI"
+            },
+            {
+                "command": "superai.impactAnalysis",
+                "title": "SuperAI: Impact Analysis",
+                "category": "SuperAI"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "superai.completeCode",
+                "key": "ctrl+shift+space",
+                "mac": "cmd+shift+space",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.autoFix",
+                "key": "ctrl+shift+f",
+                "mac": "cmd+shift+f",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.analyzeFile",
+                "key": "ctrl+shift+a",
+                "mac": "cmd+shift+a",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.globalComplete",
+                "key": "ctrl+shift+g",
+                "mac": "cmd+shift+g",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.writeFixedCode",
+                "key": "ctrl+shift+w",
+                "mac": "cmd+shift+w",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.apiKeyStatus",
+                "key": "ctrl+shift+k",
+                "mac": "cmd+shift+k"
+            },
+            {
+                "command": "superai.enhancedSyntaxFix",
+                "key": "ctrl+shift+e",
+                "mac": "cmd+shift+e",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.fourStageGeminiFix",
+                "key": "ctrl+shift+4",
+                "mac": "cmd+shift+4",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.indexProject",
+                "key": "ctrl+shift+i",
+                "mac": "cmd+shift+i"
+            },
+            {
+                "command": "superai.searchProject",
+                "key": "ctrl+shift+s",
+                "mac": "cmd+shift+s"
+            },
+            {
+                "command": "superai.refactorWithAI",
+                "key": "ctrl+shift+r",
+                "mac": "cmd+shift+r"
+            },
+            {
+                "command": "superai.fourStageMultiFile",
+                "key": "ctrl+shift+5",
+                "mac": "cmd+shift+5",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "superai.impactAnalysis",
+                "key": "ctrl+shift+m",
+                "mac": "cmd+shift+m",
+                "when": "editorTextFocus"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "superai.completeCode",
+                    "group": "superai@1",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.autoFix",
+                    "group": "superai@2",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.analyzeFile",
+                    "group": "superai@3",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.apiKeyStatus",
+                    "group": "superai@6"
+                },
+                {
+                    "command": "superai.enhancedSyntaxFix",
+                    "group": "superai@7",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.fourStageGeminiFix",
+                    "group": "superai@8",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.indexProject",
+                    "group": "superai@9"
+                },
+                {
+                    "command": "superai.searchProject",
+                    "group": "superai@10"
+                },
+                {
+                    "command": "superai.refactorWithAI",
+                    "group": "superai@11"
+                },
+                {
+                    "command": "superai.fourStageMultiFile",
+                    "group": "superai@12",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "command": "superai.impactAnalysis",
+                    "group": "superai@13",
+                    "when": "editorTextFocus"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "superai.completeCode",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.autoFix",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.analyzeFile",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.workspaceInfo"
+                },
+                {
+                    "command": "superai.toggleAutoComplete"
+                },
+                {
+                    "command": "superai.apiKeyStatus"
+                },
+                {
+                    "command": "superai.enhancedSyntaxFix",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.fourStageGeminiFix",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.indexProject"
+                },
+                {
+                    "command": "superai.searchProject"
+                },
+                {
+                    "command": "superai.refactorWithAI"
+                },
+                {
+                    "command": "superai.fourStageMultiFile",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "superai.impactAnalysis",
+                    "when": "editorIsOpen"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "SuperAI",
+            "properties": {
+                "superai.autoCompleteEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable automatic code completion suggestions"
+                },
+                "superai.serverUrl": {
+                    "type": "string",
+                    "default": "http://127.0.0.1:5000",
+                    "description": "SuperAI server URL"
+                },
+                "superai.completionTimeout": {
+                    "type": "number",
+                    "default": 5000,
+                    "description": "Timeout for completion requests (ms)"
+                },
+                "superai.enableDiagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable error detection and diagnostics"
+                },
+                "superai.enableHover": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable hover information"
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "axios": "^1.5.0"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.80.0",
+        "@types/node": "^18.0.0"
+    }
+}
