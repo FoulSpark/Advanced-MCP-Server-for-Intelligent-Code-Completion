@@ -1,4 +1,4 @@
-# Advanced MCP Server for Intelligent Code Completion
+# Advanced MCP Server for Intelligent Code Completion 
 
 A local Flask-based Model Context Protocol (MCP) server that powers intelligent, context-aware code completion and automated fixing workflows for your editor (with a bundled VS Code extension). It indexes your project, builds a symbol/dependency graph, performs semantic search, integrates with Git and GitHub/GitLab via MCP or direct APIs, and can run a self‑healing loop to plan and apply fixes using Gemini.
 
