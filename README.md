@@ -142,10 +142,6 @@ python self_healing_code_fixer.py
 - If embeddings or graph features are slow on very large repos, start with a smaller subset
 - On Windows, use the `.bat` launcher; on Unix, the `.sh` script
 
-## 📜 License
-
-Specify your license here (e.g., MIT) and provide a `LICENSE` file.
-
 ## 🙌 Acknowledgements
 
 - Model Context Protocol (MCP)
